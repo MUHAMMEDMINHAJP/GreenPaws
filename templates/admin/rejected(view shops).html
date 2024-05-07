@@ -1,0 +1,47 @@
+
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+    <table class="table table-bordered">
+        <form action="/myapp/rejectedshop_post/" method="post">
+
+            <h1>Rejected shops</h1>
+  {% csrf_token %}
+    <td><label for="textfield"></label>
+      <input type="text" placeholder="shop name" name="textfield" id="textfield" /></td>
+    <td><label for="select"></label>
+      <select name="select" id="select">
+          <option>None</option>
+          <option>Plant Shop</option>
+          <option>Pet Shop</option>
+      </select></td>
+    <td><input type="submit" name="Filter" id="Filter" value="Submit" /></td>
+  </tr>
+              </form>
+</table>
+
+<table class="table table-bordered">
+
+   <tr>
+    <td>slno</td>
+    <td>ShopName</td>
+    <td>Owner Name</td>
+    <td>Contact No</td>
+    <td>Email</td>
+    <td>Address</td>
+    <td>Licence</td>
+    <td>Shop Type</td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td><img src="{{ i.photo }}" height="50px" width="50px"><br>{{ i.shop_name }}</td>
+    <td>{{ i.owner_name }}</td>
+    <td>&nbsp;{{ i.ph_no }}</td>
+    <td>&nbsp;{{ i.email }}</td>
+    <td>&nbsp;{{ i.place }}<br>{{ i.post }}<br>{{ i.pin }}</td>
+    <td>&nbsp;<img src="{{ i.licence }}" height="50px" width="50px"></td>
+    <td>{{ i.shop_type }}</td>
+  </tr>
+    {% endfor %}
+</table>
+{% endblock %}

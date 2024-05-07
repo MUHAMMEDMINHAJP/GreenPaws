@@ -1,0 +1,84 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, label, input, select {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Didact Gothic', sans-serif;
+    background-color: #16A085;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.content-w3ls {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ABEBC6;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+.header {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.register {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.register:hover {
+    background-color: #45a049;
+}
+
+.clear {
+    clear: both;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Optional: Add some styles for responsiveness */
+@media (max-width: 768px) {
+    .content-w3ls {
+        max-width: 90%;
+    }
+}

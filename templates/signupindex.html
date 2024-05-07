@@ -1,0 +1,226 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<title>Casual Signup Form Flat Responsive widget Template :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Casual Signup Form Widget Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- fonts -->
+
+<link href="//fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+<!-- /fonts -->
+<!-- css -->
+<link href="/static/signup/css/style.css" rel='stylesheet' type='text/css' media="all" />
+<!-- /css -->
+</head>
+<body>
+<h1 style="color: white;font-size: 50px" ><b> GreenPaws!</b></h1>
+<h2 align="center"> Shop Signup Form</h2>
+<div class="content-w3ls">
+	<div class="agileits1">
+		<div class="w3-agileits">
+			<h3>Please Register Your Shop Details</h3>
+            <br>
+
+                    <form action="/myapp/signup_post/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+				<div class="form-control">
+					<label class="header">Shop Name :</label>
+					<input type="text" id="companyname" name="textfield" placeholder="Enter Your Shop Name"  onchange="capitalizeFirstLetter(t  his)" title="Please enter your Company Name" required="">
+					<div class="clear"></div>
+				</div>
+
+				<div class="form-control">
+					<label class="header">Owner Name :</label>
+					<input type="text" id="name" name="textfield1" placeholder="Enter Your Owner Name"  onchange="capitalizeFirstLetter(this)"  title="Please enter your Name" required="">
+					<div class="clear"></div>
+				</div>
+
+				<div class="form-control">
+					<label class="header">Photo :</label>
+					<input type="file" id="email" name="fileField"  title="Please upload photo">
+					<div class="clear"></div>
+				</div>
+
+				<div class="form-control">
+					<label class="header">Contact Number :</label>
+					<input type="tel" id="usrtel" name="textfield2" placeholder="Please enter Your Phone Number" minlength="10" maxlength="10" title="Please enter Your Phone Number" required="">
+					<div class="clear"></div>
+				</div>
+				<div class="form-control">
+					<label class="header">Email :</label>
+					<input type="Email" id="usrtel" name="textfield3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" placeholder=" Please enter Your email" title="Please enter Your email" required="">
+					<div class="clear"></div>
+				</div>
+				<div class="form-control">
+					<label class="header">Place :</label>
+					<input type="text" id="usrtel" name="textfield4" placeholder="Enter your Place"  onchange="capitalizeFirstLetter(this)" title="Please enter Your email" required="">
+					<div class="clear"></div>
+
+				</div>
+				<div class="form-control">
+					<label class="header">Post :</label>
+					<input type="text" id="usrtel" name="textfield5" placeholder="Enter your  Post" title="Please enter Your Post"  onchange="capitalizeFirstLetter(this)"  required="">
+					<div class="clear"></div>
+				</div>
+				<div class="form-control">
+					<label class="header">Pin :</label>
+					<input type="tel" id="usrtel" name="textfield6" placeholder="Enter your pincode" maxlength="6" minlength="6"  title="Please enter Your Phone Number" required="">
+					<div class="clear"></div>
+				</div>
+
+        <div class="form-control">
+					<label class="header">District :</label>
+                     <select name="textfield7" id="select1"  class="lock"  placeholder="Enter Shop type" required>
+                            <option value="Alappuzha">Alappuzha</option>
+                            <option value="Ernakulam">Ernakulam</option>
+                            <option value="Idukki">Idukki</option>
+                            <option value="Kannur">Kannur</option>
+                            <option value="Kasaragod">Kasaragod</option>
+                            <option value="Kollam">Kollam</option>
+                            <option value="Kottayam">Kottayam</option>
+                            <option value="Kozhikode">Kozhikode</option>
+                             <option value="Malappuram">Malappuram</option>
+                            <option value="Palakkad">Palakkad</option>
+                            <option value="Pathanamthitta">Pathanamthitta</option>
+                            <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                            <option value="Thrissur">Thrissur</option>
+                            <option value="Wayanad">Wayanad</option>
+
+
+                     </select>
+        </div>
+         <div>
+                <div class="form-group">
+        <label for="shopType">Shop Type :</label>
+        <select name="select" id="select"  class="lock"  placeholder="Enter Shop type" required>
+          <option value="Pet Shop">Pet Shop</option>
+          <option value="Plant Shop">Plant Shop</option>
+        </select>
+      </div>
+                </div>
+
+                 <div class="form-control">
+					<label class="header">Licence :</label>
+					<input type="file" id="usrtel" name="fileField2" placeholder="upload your licence" title="upload your licence" required="">
+					<div class="clear"></div>
+				</div>
+
+                 <div class="form-control">
+					<label class="header">Password :</label>
+					<input type="password" id="password1" name="textfield8" placeholder="Your Password" title="Please enter Your password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="">
+					<div class="clear"></div>
+				</div>
+                 <div class="form-control">
+					<label class="header">Comfirm Password :</label>
+					<input type="password" id="password2" name="textfield9" placeholder="Confirm Password" title="Confirm Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="">
+					<div class="clear"></div>
+				</div>
+                <div>
+                				<input type="submit"    class="register" value="Register">
+            </div>
+{#                <div class="form-control">#}
+{#					<label class="header">Email :</label>#}
+{#					<input type="email" name="textfield3" placeholder="Enter Your Password" id="mail" required="" class="form-control">#}
+{#					<div class="clear"></div>#}
+{##}
+{#				</div>#}
+{##}
+{#				<div class="form-control">#}
+{#					<label class="header">Place :</label>#}
+{#					<input type="text"  name="textfield4" placeholder="Enter Your Place " id="place" required="">#}
+{#					<div class="clear"></div>#}
+{#				</div>#}
+{##}
+{#				<div class="form-control">#}
+{#					<label class="header">Post :</label>#}
+{#					<input type="text" class="lock" name="textfield5" placeholder="Enter Your post" id="posrt" required="">#}
+{#					<div class="clear"></div>#}
+{#				</div>#}
+{#			#}
+{#				<div class="form-control">	#}
+{#					<label class="header">Pin :</label>#}
+{#					<input type="number"  name="textfield6" placeholder="Enter Your pin" id="pin" required="">#}
+{#					<div class="clear"></div>#}
+{#				</div>#}
+{##}
+{#				<div class="form-control">		#}
+{#					<label class="header">District :</label>#}
+{#					<input type="text"  name="textfield7" placeholder="Enter Your district" id="district" required="">#}
+{#					<div class="clear"></div>#}
+{##}
+{#				</div>#}
+{##}
+{#                	<div class="form-control">#}
+{#					<label class="header">Licence :</label>#}
+{#					<input type="file" id="fileField2" name="fileField2" placeholder="Your shop licence" title="Please upload shop licence" required="">#}
+{#					<div class="clear"></div>#}
+{#				</div>#}
+{#                <div class="form-control">#}
+{##}
+{#                     <label for="select">Shop Type:</label>#}
+{#                     <select name="select" id="select"  class="lock" name="shop" placeholder="Enter Shop type" required>#}
+{#                    <option>Plant Shop</option>#}
+{#                     <option>Pet Shop</option>#}
+{#					<div class="clear"></div>#}
+{#                     </select>#}
+{#                </div>#}
+{##}
+{#				<div class="form-control">#}
+{#					<label class="header">Your Password :</label>#}
+{#					<input type="password" class="lock" name="textfield8" placeholder="Enter Your Password" id="password1" required="">#}
+{#					<div class="clear"></div>#}
+{#				</div>#}
+{##}
+{#				<div class="form-control">#}
+{#					<label class="header">Confirm Password :</label>#}
+{#					<input type="password" class="lock" name="textfield9" placeholder="Re-Enter Your Password" id="password2" required="">#}
+{#					<div class="clear"></div>#}
+{#				</div>#}
+{#				<input type="submit" class="register" value="Register">#}
+			</form>
+			<script type="text/javascript">
+				window.onload = function () {
+					document.getElementById("password1").onchange = validatePassword;
+					document.getElementById("password2").onchange = validatePassword;
+				}
+				function validatePassword(){
+					var pass2=document.getElementById("password2").value;
+					var pass1=document.getElementById("password1").value;
+					if(pass1!=pass2)
+						document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+					else
+						document.getElementById("password2").setCustomValidity('');
+						//empty string means no validation error
+				}
+			</script>
+		</div>
+	</div>
+	<div class="agileits2">
+
+	</div>
+	<div class="clear"></div>
+</div>
+<p class="copyright w3layouts w3 w3l agileits-w3layouts agile w3-agile">Already have a account  <a href="/myapp/login/" target="_blank">LOGIN!</a></p>
+
+<script>
+    function capitalizeFirstLetter(inputElement) {
+        // Get the value of the input field
+        var value = inputElement.value;
+        // Capitalize the first letter
+        var capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+        // Update the input field with the capitalized value
+        inputElement.value = capitalizedValue;
+    }
+</script>
+</form>
+</body>
+
+</html>

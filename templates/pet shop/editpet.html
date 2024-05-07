@@ -1,0 +1,50 @@
+{% extends 'pet shop/pethomeindex1.html' %}
+{% block heading %}
+<h2 class="title-w3l">Edit <span>Pet details</span></h2>
+{% endblock %}
+{% block body %}
+
+<form action="/myapp/editpet_post/#abc" method="post" enctype="multipart/form-data" name="form1" id="form1">
+
+    {% csrf_token %}
+    <input type="hidden" placeholder="pet name" name="id" value="{{ data.id }}">
+
+  <table class="table table-bordered" width="100px">
+    <tr>
+      <td><b>Pet name</b></td>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" onchange="capitalizeFirstLetter(this)" value="{{data.pet_name}}"/></td>
+    </tr>
+    <tr>
+      <td><b>Breed Name</b></td>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" onchange="capitalizeFirstLetter(this)" value="{{data.breed_name}}" required /></td>
+    </tr>
+    <tr>
+      <td><b>Photo</b></td>
+      <td><label for="fileField"></label>
+          <img src="{{ data.photo}}" alt="" height="50px" width="50px"/>
+      <input type="file" name="fileField" id="fileField" required /></td>
+    </tr>
+    <tr>
+      <td><b>Age</b></td>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3"  id="textfield3" value="{{data.age}}" /></td>
+    </tr>
+
+    <tr>
+      <td><b>Price</b></td>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" onchange="capitalizeFirstLetter(this)"  value="{{data.price}}" required/></td>
+    </tr>
+    <tr>
+      <td><b>Details</b></td>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" onchange="capitalizeFirstLetter(this)" value="{{data.details}}"  required/></td>
+    </tr>
+
+  </table>
+<div align="center">      <input type="submit" name="button" id="button" value="UPDATE" class="btn-outline-success"/>
+</div>
+</form>
+{% endblock %}

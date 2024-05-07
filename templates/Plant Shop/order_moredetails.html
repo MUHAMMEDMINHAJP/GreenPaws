@@ -1,0 +1,60 @@
+{% extends 'Plant Shop/plantindex1.html' %}
+    {% block heading %}
+<h2 class="title-w3l">More Details<span>Order</span></h2>
+{% endblock %}
+{% block body %}
+<form action="/myapp/plantshop_vieworders_post/" method="post"><table class="table table-bordered">
+
+    {% csrf_token %}
+{#  <tr>#}
+{#      <td>From</td>#}
+{##}
+{#    <td><input type="date" name="fdate" id="textfield" /></td>#}
+{#      <td>To</td>#}
+{##}
+{#    <td><input type="date" name="tdate" id="textfield" /></td>#}
+{##}
+{#    <td><input type="submit" name="Filter" id="Filter" value="Submit" /></td>#}
+{#  </tr>#}
+</table>
+
+<table class="table table-bordered">
+  <tr>
+    <td><b>slno</b></td>
+    <td><b>Plant ID</b></td>
+    <td><b>Plant Name</b></td>
+    <td><b>Address</b></td>
+      <td><b>Quantity</b></td>
+      <td><b></b></td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;<b>{{ forloop.counter }}</b></td>
+      <td><b>{{ i.PLANT.id}}</b></td>
+
+      <td><img src="{{ i.PLANT.photo}}" height="150px" width="150px" ><br> {{ i.PLANT.plant_name}}</td>
+{#    <td><b>{{ i.PLANT.scientific_name }}</b></td>#}
+      <td><b>{{ i.PLANT_ORDERMAIN.ADDRESS.name }},
+          {{ i.PLANT_ORDERMAIN.ADDRESS.ph_no }},
+          {{ i.PLANT_ORDERMAIN.ADDRESS.place }},
+          {{ i.PLANT_ORDERMAIN.ADDRESS.city }},
+          {{ i.PLANT_ORDERMAIN.ADDRESS.post }},
+          {{ i.PLANT_ORDERMAIN.ADDRESS.pin }},
+          {{ i.PLANT_ORDERMAIN.ADDRESS.district }},
+      </b>
+      </td>
+{#    <td><b>{{ i.scientific_name}}</b></td>#}
+{#       <td><img src="{{ i.photo }}" height="50px" width="50px" alt=""/></td>#}
+      <td><b>{{ i.quantity }}</b></td>
+
+{#      <td class=" btn btn-success">assign to Delivery Boy</></td>#}
+
+{#    #}
+{#    <td><a href="/myapp/editplant/{{ i.id }}" class=" btn btn-success">Edit</a></td>#}
+{#    <td><a href="/myapp/delplant/{{ i.id }}" class="btn btn-danger">Delete</a></td>#}
+{#    <td><a href="/myapp/plantstock/{{ i.id }}" class="btn-style">Add Stock</a></td>#}
+  </tr>
+    {% endfor %}
+</table>
+</form>
+{% endblock %}

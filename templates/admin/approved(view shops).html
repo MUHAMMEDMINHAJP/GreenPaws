@@ -1,0 +1,51 @@
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+
+<form action="/myapp/approvedshop_post/" method="post">
+  {% csrf_token %}
+    <<table class="table table-bordered">
+
+      <center><h1>Approved shops</h1></center>
+    <br>
+    <br>
+
+  <tr>
+    <td><label for="textfield"></label>
+      <input type="text"  placeholder="shop name" name="textfield" id="textfield" /></td>
+    <td><label for="select"></label>
+      <select name="select" id="select">
+             <option>None</option>
+          <option>Plant Shop</option>
+          <option>Pet Shop</option>
+      </select></td>
+    <td><input type="submit" name="Filter" id="Filter" value="Submit" /></td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+
+
+  <tr>
+    <td>slno</td>
+    <td>ShopName</td>
+    <td>Owner Name</td>
+    <td>Contact No</td>
+    <td>Email</td>
+    <td>Address</td>
+    <td>Licence</td>
+    <td>Shop Type</td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td><a href="{{ i.photo }}">{{ i.shop_name }}</a> </td>
+    <td>{{ i.owner_name }}</td>
+    <td>&nbsp;{{ i.ph_no }}</td>
+    <td>&nbsp;{{ i.email }}</td>
+    <td>&nbsp;{{ i.place }}<br>{{ i.post }}<br>{{ i.pin }}</td>
+      <td>&nbsp;<a href="{{ i.licence }}" height="50px" width="50px">idproof</a></td>
+    <td>{{ i.shop_type }}</td>
+  </tr>
+    {% endfor %}
+</table></form>
+{% endblock %}

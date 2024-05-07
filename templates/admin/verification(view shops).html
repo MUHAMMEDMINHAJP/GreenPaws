@@ -1,0 +1,109 @@
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requested shops</title>
+  <style>
+    /* Styles for form */
+    .form-container {
+      margin-bottom: 20px;
+    }
+    input[type="text"]{
+        border-color: #0c4128;
+    }
+{#    select {#}
+{#      padding: 10px;#}
+{#      width: 100%;#}
+{#      box-sizing: border-box;#}
+{#    }#}
+    input[type="submit"] {
+{#      background-color: #4CAF50;#}
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Styles for table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    /* Styles for buttons */
+    .btn {
+      padding: 8px 12px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .btn-success {
+      background-color: #28a745;
+      color: white;
+    }
+    .btn-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form action="/myapp/verifyshop_post/" method="post">
+      <h1  align="center">Requested shops</h1>
+        <br>
+        <br>
+      {% csrf_token %}
+      <input type="text" placeholder="Shop name" name="textfield" id="textfield" />
+      <select name="select" id="select">
+        <option>None</option>
+        <option>Plant Shop</option>
+        <option>Pet Shop</option>
+      </select>
+      <input type="submit" name="Filter" id="Filter" value="Submit" class="btn-success" />
+    </form>
+  </div>
+
+  <table>
+    <tr>
+      <th>Sl No</th>
+      <th>Shop Name</th>
+      <th>Owner Name</th>
+      <th>Contact No</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Licence</th>
+      <th>Shop Type</th>
+      <th colspan="2">Actions</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td><img src="{{ i.photo }}" height="50px" width="50px"><br>{{ i.shop_name }}</td>
+      <td>{{ i.owner_name }}</td>
+      <td>{{ i.ph_no }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.place }}<br>{{ i.post }}<br>{{ i.pin }}</td>
+      <td><img src="{{ i.licence }}" height="50px" width="50px"></td>
+      <td>{{ i.shop_type }}</td>
+      <td><a href="/myapp/approve/{{ i.LOGIN.id }}" class="btn btn-success">Approve</a></td>
+      <td><a href="/myapp/reject/{{ i.LOGIN.id }}" class="btn btn-danger">Reject</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
+
+{% endblock %}

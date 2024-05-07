@@ -1,0 +1,119 @@
+{% extends 'Plant Shop/plantindex1.html' %}
+    {% block heading %}
+<h2 class="title-w3l">View <span>Orders</span></h2>
+{% endblock %}
+{% block body %}
+<form action="/myapp/plantshop_vieworders_post/" method="post"><table class="table table-bordered">
+
+    {% csrf_token %}
+  <tr>
+      <td>From</td>
+
+    <td><input type="date" name="fdate" id="textfield" required /></td>
+      <td>To</td>
+
+    <td><input type="date" name="tdate" id="textfield" required /></td>
+
+         <td><label for="select"></label>
+      <select name="search" id="select">
+        <option value="">None</option>
+        <option>Assigned</option>
+        <option>pending</option>
+
+
+      </select></td>
+
+    <td><input type="submit" name="Filter" id="Filter" value="Submit" /></td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+    <td><b>slno</b></td>
+    <td><b>DATE</b></td>
+
+       <td><b>USERNAME</b></td>
+       <td><b>EMAIL</b></td>
+       <td><b>STATUS</b></td>
+       <td><b>VIEW MORE</b></td>
+       <td><b>BILL</b></td>
+       <td><b>DELIVERY</b></td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;<b>{{ forloop.counter }}</b></td>
+    <td><b>{{ i.date}}</b></td>
+    <td><b>{{ i.USER.name }}</b></td>
+    <td><b>{{ i.USER.email }}</b></td>
+      <td><b>{{ i.status }}</b></td>
+      <td><a href="/myapp/plantshop_vieworders_more/{{ i.id }}"  class=" btn btn-success">View More</a></td>
+
+{#      <td>#}
+{##}
+{#          <a href="/myapp/generate_pdf_bill_payment/{{ i.id }}"  class=" btn btn-success">Bill Generate</a></td>#}
+
+       <td>{% if i.status == 'canceled' %}
+        <span>No bill to generate</span>
+      {% else %}
+        <a href="/myapp/generate_pdf_bill_payment/{{ i.id }}" class="btn btn-success">Bill Generate</a>
+      {% endif %}
+    </td>
+
+            <td>
+                {% if i.status == 'Assigned' %}
+                     <a href="/myapp/shop_viewassigneddel/{{ i.id }}" class="btn btn-primary active">assigned <br>Delivery Boy</a>
+                {% elif i.status == 'Delivered' %}
+                    <a href="/myapp/shop_viewassigneddel/{{ i.id }}" class="btn btn-primary disabled">Delivered<br> Delivery Boy</a>
+                {% elif i.status == 'canceled' %}
+                     <span>No</span>
+                {% else %}
+                <a href="/myapp/plantshop_assigndel/{{ i.id }}" class=" btn btn-success">assign to<br> Delivery Boy</a>
+                {% endif %}
+            </td>
+
+  </tr>
+    {% endfor %}
+</table>
+</form>
+{% endblock %}
+
+
+{#<table class="table table-bordered">#}
+{#  <tr>#}
+{#    <td><b>slno</b></td>#}
+{#    <td><b>DATE</b></td>#}
+{#    <td><b>USERNAME</b></td>#}
+{#    <td><b>EMAIL</b></td>#}
+{#    <td><b>STATUS</b></td>#}
+{#    <td><b></b></td>#}
+{#    <td><b></b></td>#}
+{#  </tr>#}
+{#  {% for i in data %}#}
+{#  <tr>#}
+{#    <td>&nbsp;<b>{{ forloop.counter }}</b></td>#}
+{#    <td><b>{{ i.date }}</b></td>#}
+{#    <td><b>{{ i.USER.name }}</b></td>#}
+{#    <td><b>{{ i.USER.email }}</b></td>#}
+{#    <td><b>{{ i.status }}</b></td>#}
+{#    <td>#}
+{#      <a href="/myapp/plantshop_vieworders_more/{{ i.id }}" class="btn btn-success">View More</a>#}
+{#    </td>#}
+{#    <td>#}
+{#      {% if i.status == 'canceled' %}#}
+{#        <span>No bill to generate</span>#}
+{#      {% else %}#}
+{#        <a href="/myapp/generate_pdf_bill_payment/{{ i.id }}" class="btn btn-success">Bill Generate</a>#}
+{#      {% endif %}#}
+{#    </td>#}
+{#    <td>#}
+{#      {% if i.status == 'Assigned' %}#}
+{#        <a href="/myapp/shop_viewassigneddel/{{ i.id }}" class="btn btn-primary active">assigned <br>Delivery Boy</a>#}
+{#      {% elif i.status == 'Delivered' %}#}
+{#        <a href="/myapp/shop_viewassigneddel/{{ i.id }}" class="btn btn-primary disabled">Delivered<br> Delivery Boy</a>#}
+{#      {% else %}#}
+{#        <a href="/myapp/plantshop_assigndel/{{ i.id }}" class="btn btn-success">assign to<br> Delivery Boy</a>#}
+{#      {% endif %}#}
+{#    </td>#}
+{#  </tr>#}
+{#  {% endfor %}#}
+{#</table>#}

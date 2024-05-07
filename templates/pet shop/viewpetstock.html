@@ -1,0 +1,40 @@
+{% extends 'pet shop/pethomeindex1.html' %}
+    {% block heading %}
+<h2 class="title-w3l">Pet <span>Stock</span></h2>
+{% endblock %}
+{% block body %}
+<form action="/myapp/viewpetstock_post/" method="post"><table class="table table-bordered">
+
+    {% csrf_token %}
+  <tr>
+    <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" /></td>
+
+    <td><input type="submit" name="Filter" id="Filter" value="Submit" /></td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+    <td><b>slno</b></td>
+    <td><b>Plant Name</b></td>
+
+       <td><b>Quantity</b></td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;<b>{{ forloop.counter }}</b></td>
+    <td><b>{{ i.PET.pet_name }}</b></td>
+{#    <td><b>{{ i.scientific_name}}</b></td>#}
+{#       <td><img src="{{ i.photo }}" height="50px" width="50px" alt=""/></td>#}
+      <td><b>{{ i.stock }}</b></td>
+    
+{#    #}
+{#    <td><a href="/myapp/editplant/{{ i.id }}" class=" btn btn-success">Edit</a></td>#}
+{#    <td><a href="/myapp/delplant/{{ i.id }}" class="btn btn-danger">Delete</a></td>#}
+{#    <td><a href="/myapp/plantstock/{{ i.id }}" class="btn-style">Add Stock</a></td>#}
+  </tr>
+    {% endfor %}
+</table>
+</form>
+{% endblock %}

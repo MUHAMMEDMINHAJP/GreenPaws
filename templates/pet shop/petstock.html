@@ -1,0 +1,30 @@
+
+{% extends 'pet shop/pethomeindex1.html' %}
+    {% block heading %}
+<h2 class="title-w3l">ADD <span>Stock</span></h2>
+{% endblock %}
+{% block body %}
+
+<form action="/myapp/petstock_post/" method="post" enctype="multipart/form-data" name="form1"   id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered">
+    <tr>
+      <td><b>Pet:</b></td>
+      <td><label for="select"></label>
+        <select name="select" id="select" class="form-control" required >
+            {% for i in data %}
+            <option value="{{ i.id }}">{{ i.pet_name }}</option>
+            {% endfor %}
+      </select></td>
+    </tr>
+      <td><b>Quantity:</b></td>
+      <td><label for="textfield3"></label>
+      <input type="number" class="form-control" required  name="textfield3"id="textfield3" /></td>
+    </tr>
+     <td></td>
+      <td><input type="submit" name="button" id="button" value="ADD" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+
+{% endblock %}

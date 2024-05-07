@@ -1,0 +1,48 @@
+{% extends 'pet shop/pethomeindex1.html' %}
+{% block heading %}
+<h2 class="title-w3l">My <span>Profile</span></h2>
+{% endblock %}
+{% block body %}
+<form   id="form1" name="form1" method="post" action="">
+
+  <table class="table table-bordered">
+    <tr>
+      <td><b>Shop Name</b></td>
+      <td><b><img src="{{ data.photo }}" alt="" height="50px" width="50px"/><br>{{ data.shop_name }}</b></td>
+    </tr>
+    <tr>
+      <td><b>Owner Name</b></td>
+      <td><b>{{ data.owner_name }}</b></td>
+    </tr>
+    <tr>
+      <td><b>Contact No</b></td>
+      <td><b>{{ data.ph_no }}</b></td>
+    </tr>
+    <tr>
+      <td><b>Email</td>
+      <td>&nbsp;<b>{{ data.email }}</b></td>
+    </tr>
+    <tr>
+      <td><b>Address</td>
+      <td>&nbsp;<b>{{ data.place }}<br>{{ data.post }}<br> {{ data.district }}<br>{{ data.pin }}</b></td>
+    </tr>
+
+    <tr>
+      <td><b>Licence</b></td>
+      <td><img src="{{ data.licence }}" alt="" height="50px" width="50px"/></td>
+    </tr>
+    <tr>
+      <td><b>Shop Type</b></td>
+      <td>&nbsp;<b>{{ data.shop_type }}</b></td>
+    </tr>
+
+  </table>
+<div align="center">
+
+         <a href="/myapp/petshop_editprof/" type="submit"  name="edit" id="edit" value="Edit"  class="btn btn-success" >EDIT</a><span>
+    <br>
+    <br>
+    <a href="/myapp/petshophome/" type="submit"  name="edit" id="edit" value="Edit"  class="btn btn-info" >Home</a></span>
+</div>
+</form>
+{% endblock %}

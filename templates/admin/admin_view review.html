@@ -1,0 +1,47 @@
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+<form action="" method="post">
+{#   <table width="100%" cellspacing="0" cellpadding="10" style="border-collapse: collapse; width: 100%; text-align: left;">#}
+                    <h1 style="padding: 8px;font-weight: bold; font-size: 35px;text-align: center;">Review&Rating</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <td><b>Id</b></td>
+    <td><b>Username </b></td>
+    <td><b>Shop name </b></td>
+    <td><b>Shop type </b></td>
+    <td><b>Date</b></td>
+    <td><b>Review</b></td>
+      <td><b>Rating</b></td>
+      <td><b></b></td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;<b>{{ forloop.counter }}</b></td>
+  <td>{{ i.USER.name }}</td>
+      <td><b>{{ i.SHOP.shop_name }}</b></td>
+      <td><b>{{ i.SHOP.shop_type }}</b></td>
+      <td><b>{{ i.date }}</b></td>
+      <td><b>{{ i.review }}</b></td>
+
+
+
+
+<td>{% if i.rating == "0.5" %}<img src="/static/star/rating.png"width="30"height="40">{% elif i.rating == "1.0" %}<img src="/static/star/star.png"width="30"height="40">
+            {% elif i.rating == "1.5" %}<img src="/static/star/star.png"width="30"height="40"><img src="/static/star/rating.png"width="30"height="40">{% elif i.rating == "2.0" %}<img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40">
+{#            {% elif i.rating == "1.5" %}<img src="/static/star/star.jpg" width="30" height="40"><img src="/static/star/rating.png"width="30"height="40">{% elif i.rating == "2.0" %}<img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40">#}
+            {% elif i.rating == "2.5" %}<img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/rating.png"width="30"height="40">
+            {% elif i.rating == "3.0" %}<img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40">
+            {% elif i.rating == "3.5" %}<img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/rating.png"width="30"height="40">
+            {% elif i.rating == "4.5" %}<img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/rating.png"width="30"height="40">
+            {% elif i.rating == "4.0" %}<img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40">
+            {% elif i.rating == "5.0" %}<img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40"><img src="/static/star/star.png"width="30"height="40">
+
+            {% endif %}</td>
+</tr>
+ {% endfor %}
+
+</table>
+</form>
+
+{% endblock %}

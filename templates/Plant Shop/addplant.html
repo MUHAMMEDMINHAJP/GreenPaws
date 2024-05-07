@@ -1,0 +1,135 @@
+{% extends 'Plant Shop/plantindex1.html' %}
+    {% block heading %}
+<h2 class="title-w3l">Add<span>Plants</span></h2>
+{% endblock %}
+{% block body %}
+    <style>
+        /* Apply basic styling to the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #00e783;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-size: 20px;
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"], input[type="file"], select, textarea {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"], a.btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-right: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover, a.btn:hover {
+            background-color: #45a049;
+        }
+
+        a.btn {
+            background-color: #007bff;
+        }
+
+        a.btn:hover {
+            background-color: #0056b3;
+        }
+
+        center {
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<form action="/myapp/addplant_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+
+    <table>
+        <tr>
+            <th>Plant Name</th>
+            <td><input type="text" required name="textfield" id="textfield" /></td>
+        </tr>
+        <tr>
+            <th>Scientific Name</th>
+            <td><input type="text" required name="textfield2" id="textfield2" /></td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td><input type="file" required name="fileField" id="fileField" /></td>
+        </tr>
+        <tr>
+            <th>Size</th>
+            <td><input type="text" required name="textfield3" id="textfield3" /></td>
+        </tr>
+        <tr>
+            <th>Plant Type</th>
+            <td>
+                <select name="select" id="select" required>
+                    <option value="">Select</option>
+                    <option value="Indoor">Indoor</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="Herb Plants">Herb Plants</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td><input type="text" required name="textfield4" id="textfield4" /></td>
+        </tr>
+        <tr>
+            <th>Details</th>
+            <td><textarea type="text" required name="textfield5" id="textfield5"></textarea></td>
+        </tr>
+    </table>
+    <center>
+        <input type="submit" name="button" id="button" value="ADD" />
+        <a href="/myapp/back_phome/" type="submit" name="edit" id="edit" value="Edit" class="btn">BACK to Home</a>
+    </center>
+</form>
+
+
+{% endblock %}

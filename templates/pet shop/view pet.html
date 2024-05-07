@@ -1,0 +1,45 @@
+{% extends 'pet shop/pethomeindex1.html' %}
+{% block heading %}
+<h2 class="title-w3l">My <span>Pets</span></h2>
+{% endblock %}
+<br><br>
+{% block body %}
+<form action="/myapp/viewpet_post/" method="post"><table class="table table-bordered">
+
+    <h1>View Pets</h1>
+    {% csrf_token %}
+  <tr>
+    <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" /></td>
+    <td><input type="submit" name="Filter" id="Filter" value="Submit" /></td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+    <td><b>slno</b></td>
+    <td><b>Pet Name</b></td>
+    <td><b>Breed Name</b></td>
+      <td><b>Photo</b></td>
+    <td><b>Age</b></td>
+    <td><b>Price</b></td>
+      <td><b>Details</b></td>
+
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{i.pet_name}}&nbsp;</td>
+    <td>&nbsp;{{i.breed_name }}</td>
+    <td>&nbsp;<img src="{{ i.photo }}" height="50px" width="50px" alt=""/></td>
+    <td>&nbsp;{{i.age }}</td>
+    <td>{{i.price}}&nbsp;</td>
+        <td>{{i.details}}&nbsp;</td>
+    
+    <td><a href="/myapp/editpet/{{ i.id }}" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Edit</a></td>
+    <td><a href="/myapp/delpet/{{ i.id }}" class="btn btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off">Delete</a></td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+{% endblock %}

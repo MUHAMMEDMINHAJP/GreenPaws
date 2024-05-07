@@ -1,0 +1,141 @@
+{% extends 'Plant Shop/plantindex1.html' %}
+    {% block heading %}
+<h2 class="title-w3l">Plant<span>Stock</span></h2>
+{% endblock %}
+{% block body %}
+  <style>
+        /* Apply basic styling to the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #bbf4c1;
+            padding: 20px;
+        }
+
+        form {
+            max-width:75%;
+            margin: 2px auto;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        input[type="text"], select {
+            width: calc(100% - 10px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            max-width: 50px;
+            max-height: 50px;
+            border-radius: 4px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            margin-right: 5px;
+            text-decoration: none;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-info {
+            background-color: #007bff;
+        }
+
+        .btn:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-info:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<form action="/myapp/plantstock_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+            <th><b>Plant:</b></th>
+            <td>
+                <select name="select" id="select" class="form-control" required>
+                    {% for i in data %}
+                        <option value="{{ i.id }}">{{ i.plant_name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><b>Quantity:</b></th>
+            <td><input type="number" class="form-control" required name="textfield3" id="textfield3"></td>
+        </tr>
+        <tr>
+            <center>
+                <td></td>
+            <td><input align="center" type="submit" name="button" id="button" value="ADD" class="btn btn-success" />
+                        <a  href="/myapp/back_phome/" style="alignment: center" class="btn btn-info">BACK to Home</a></td>
+                </center>
+
+        </tr>
+{#        <tr>#}
+{#            <td></td>#}
+{#            <td><a href="/myapp/back_phome/" class="btn btn-info">BACK to Home</a></td>#}
+{#        </tr>#}
+    </table>
+</form>
+
+
+{% endblock %}

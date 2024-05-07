@@ -1,0 +1,75 @@
+{% extends 'Plant Shop/plantindex1.html' %}
+  {% block heading %}
+<h2 class="title-w3l">User-<span>Review</span></h2>
+{% endblock %}
+
+{% block body %}
+   <style>
+        /* Apply basic styling to the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid greenyellow;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #86F272;
+            font-size: 20px;
+        }
+
+        /* Style for the rating images */
+        .rating-img {
+            width: 30px;
+            height: 40px;
+        }
+        </style>
+    <form action="" method="post">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Date</th>
+            <th>Review</th>
+            <th>Rating</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.USER.name }}</td>
+            <td>{{ i.date }}</td>
+            <td>{{ i.review }}</td>
+            <td>
+                {% if i.rating == "0.5" %}
+                <img class="rating-img" src="/static/star/rating.png">
+                {% elif i.rating == "1.0" %}
+                <img class="rating-img" src="/static/star/star.png">
+                {% elif i.rating == "1.5" %}
+                <img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/rating.png">
+                {% elif i.rating == "2.0" %}
+                <img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png">
+                {% elif i.rating == "2.5" %}
+                <img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/rating.png">
+                {% elif i.rating == "3.0" %}
+                <img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png">
+                {% elif i.rating == "3.5" %}
+                <img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/rating.png">
+                {% elif i.rating == "4.0" %}
+                <img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png">
+                {% elif i.rating == "4.5" %}
+                <img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/rating.png">
+                {% elif i.rating == "5.0" %}
+                <img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png"><img class="rating-img" src="/static/star/star.png">
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+
+{% endblock %}

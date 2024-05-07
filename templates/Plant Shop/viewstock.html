@@ -1,0 +1,70 @@
+{% extends 'Plant Shop/plantindex1.html' %}
+    {% block heading %}
+<h2 class="title-w3l">View <span>Plant stock</span></h2>
+{% endblock %}
+{% block body %}
+<style>
+  /* Style the tables */
+  .table-bordered {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px; /* Add some space between tables */
+  }
+  .table-bordered th, .table-bordered td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  .table-bordered th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  /* Style the Plant Name column */
+  .plant-name {
+    color: black;
+    font-size: 14px;
+  }
+
+  /* Style the Submit button */
+  #submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* Add some margin to the form */
+  form {
+    margin-bottom: 20px;
+  }
+</style>
+
+<form action="/myapp/viewplantstock_post/" method="post">
+  <table class="table table-bordered">
+    <!-- CSRF token -->
+    {% csrf_token %}
+    <!-- Your filter inputs -->
+  </table>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>slno</th>
+      <th class="plant-name">Plant Name</th>
+      <th>Quantity</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td class="plant-name">{{ i.PLANT.plant_name }}</td>
+      <td>{{ i.stock }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <!-- Submit button -->
+</form>
+
+{% endblock %}

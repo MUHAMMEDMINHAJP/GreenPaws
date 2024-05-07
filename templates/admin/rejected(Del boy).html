@@ -1,0 +1,40 @@
+{% extends 'admin/adminindex1.html' %}
+{% block body %}
+    <form action="/myapp/rejecteddel_post/" method="post"><table class="table table-bordered">
+        {% csrf_token %}
+    <h1>Requested Delivery boys</h1>
+  <tr>
+    <td><label for="textfield"></label>
+      <input type="text"  placeholder="shop name" name="textfield" id="textfield" /></td>
+    <td><input type="submit" name="Go" id="Go" value="Search" /></td>
+   
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+    <td width="25">slno</td>
+    <td width="75">Name</td>
+    <td width="33">Ph No</td>
+    <td width="35">Email</td>
+    <td width="44">Address</td>
+    <td width="62">Id proof</td>
+   
+ 
+  </tr>
+    {% for i in data %}
+  <tr>
+     <tr>
+    <td>{{ forloop.counter }}</td>
+    <td><a href="{{ i.photo }}" height="100px" width="100px" alt=""><br> {{ i.name }} </a></td>
+    <td>{{ i.ph_no }}</td>
+    <td>{{ i.email }}</td>
+    <td>&nbsp;{{ i.place }}<br>{{ i.post }}<br>{{ i.pin }} <br>{{ i.district }}</td>
+      <td><a href=" {{ i.idproof }}" height="100px" width="100px">id proof</a></td>
+
+  </tr>
+    {% endfor %}
+
+</table></form>
+
+{% endblock %}

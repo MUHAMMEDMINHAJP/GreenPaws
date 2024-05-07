@@ -1,0 +1,156 @@
+{% extends 'Plant Shop/plantindex1.html' %}
+    {% block heading %}
+<h2 class="title-w3l">My <span>Plants</span></h2>
+{#       <a href="/myapp/back_phome/" class="btn btn-info"><i class="fas fa-home"></i> Back to Home</a>#}
+{% endblock %}
+{% block body %} <style>
+        /* Apply basic styling to the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #bbf4c1;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 100%;
+            margin: 2px auto;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        input[type="text"], select {
+            width: calc(100% - 10px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            max-width: 50px;
+            max-height: 50px;
+            border-radius: 4px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            margin-right: 5px;
+            text-decoration: none;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-info {
+            background-color: #007bff;
+        }
+
+        .btn:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-info:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+
+</head>
+<body>
+
+<form action="/myapp/viewplant_post/" method="post">
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+            <td><input type="text" name="textfield" id="textfield" placeholder="Search Plant Name"/></td>
+            <td>
+                <select name="select" id="select">
+                    <option value="">None</option>
+                    <option value="Indoor">In-Door</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="Herb Plants">Herb Plants</option>
+                </select>
+            </td>
+            <td><input type="submit" name="Filter" id="Filter" value="Submit" class="btn btn-success" /></td>
+        </tr>
+    </table>
+
+    <table class="table">
+        <tr>
+            <th>Sl No</th>
+            <th>Plant Name</th>
+            <th>Scientific Name</th>
+            <th>Photo</th>
+            <th>Size</th>
+            <th>Plant Type</th>
+            <th>Price</th>
+            <th>Details</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><b>{{ i.plant_name }}</b></td>
+            <td>{{ i.scientific_name }}</td>
+            <td><img src="{{ i.photo }}" alt="Plant Photo"/></td>
+            <td>{{ i.size }}</td>
+            <td>{{ i.plant_type }}</td>
+            <td>{{ i.price }}</td>
+            <td><a href="/myapp/details/{{ i.id }}">Details</a></td>
+            <td><a href="/myapp/editplant/{{ i.id }}" class="btn btn-success">Edit</a></td>
+            <td><a href="/myapp/delplant/{{ i.id }}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</form>
+{% endblock %}

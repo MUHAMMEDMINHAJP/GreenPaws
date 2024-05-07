@@ -1,0 +1,75 @@
+{% extends 'Plant Shop/plantindex1.html' %}
+    {% block heading %}
+<h2 class="title-w3l">Assigned <span>Delivery boy</span></h2>
+{% endblock %}
+{% block body %}
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #f2f2f2;
+  }
+
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  a:hover {
+    color: #0066cc;
+  }
+</style>
+
+<form action="/myapp/approveddel_post/" method="post"><table class="table table-bordered">
+
+</table>
+
+<table class="table table-bordered">
+  <tr>
+    <td width="25">slno</td>
+    <td width="75">Name</td>
+    <td width="33">Ph No</td>
+    <td width="35">Date</td>
+
+
+
+  </tr>
+    {% for i in data %}
+  <tr>
+     <tr>
+    <td>{{ forloop.counter }}</td>
+    <td><a href="{{ i.DELIVERY.photo }}" height="100px" width="100px" alt=""> {{ i.DELIVERY.name }} </a></td>
+    <td>{{ i.DELIVERY.ph_no }}</td>
+    <td>{{ i.date }}</td>
+
+
+
+  </tr>
+    {% endfor %}
+</table></form>
+
+{% endblock %}

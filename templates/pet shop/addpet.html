@@ -1,0 +1,52 @@
+{% extends 'pet shop/pethomeindex1.html' %}
+{% block heading %}
+<h2 class="title-w3l">Add <span>Pets</span></h2>
+{% endblock %}
+{% block body %}
+<form action="/myapp/addpet_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+     <h1>Add Pets</h1>
+  <table class="table table-bordered">
+    <tr>
+      <td>Pet Name</td>
+      <td>
+      <input type="text" name="textfield" id="textfield" onchange="capitalizeFirstLetter(this)" class="form-control" required /></td>
+    </tr>
+    <tr>
+      <td>Breed Name</td>
+      <td>
+      <input type="text" name="textfield2" id="textfield2"  onchange="capitalizeFirstLetter(this)" class="form-control" required  /></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td>
+      <input type="file" name="fileField" id="fileField"  class="form-control" required  /></td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td>
+      <input type="text" name="textfield3" id="textfield3"  class="form-control" required /></td>
+    </tr>
+{#    <tr>#}
+{#      <td>Pet Type</td>#}
+{#      <td><label for="select"></label>#}
+{#        <select name="select" id="select">#}
+{#      </select></td>#}
+{#    </tr>#}
+    <tr>
+      <td>Price</td>
+      <td>
+      <input type="text" name="textfield4" id="textfield4" class="form-control" onchange="capitalizeFirstLetter(this)" required  /></td>
+    </tr>
+    <tr>
+      <td>Details</td>
+      <td>
+          <textarea type="text" name="textfield5" id="textfield5" onchange="capitalizeFirstLetter(this)"  class="form-control" required ></textarea></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="ADD" class="btn btn-success"/></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

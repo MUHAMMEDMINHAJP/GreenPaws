@@ -1,0 +1,117 @@
+{% extends 'Plant Shop/plantindex1.html' %}
+{% block heading %}
+<h2 class="title-w3l">My <span>Profile</span></h2>
+{% endblock %}
+{% block body %}
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      max-height: 60%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table td, .table th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .table tr:hover {
+      background-color: #ddd;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+    }
+
+    .btn-info {
+      background-color: #17a2b8;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+
+    .btn-info:hover {
+      background-color: #138496;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <form id="form1" name="form1" method="post" action="">
+    <table class="table table-bordered">
+      <tr>
+        <td><b>Shop Name</b></td>
+        <td><img src="{{ data.photo }}" alt="" height="50px" width="50px"/><br><b>{{ data.shop_name }}</b></td>
+      </tr>
+      <tr>
+        <td><b>Owner Name</b></td>
+        <td><b>{{ data.owner_name }}</b></td>
+      </tr>
+      <tr>
+        <td><b>Contact No</b></td>
+        <td><b>{{ data.ph_no }}</b></td>
+      </tr>
+      <tr>
+        <td><b>Email</b></td>
+        <td><b>{{ data.email }}</b></td>
+      </tr>
+      <tr>
+        <td><b>Address</b></td>
+        <td><b>{{ data.place }}<br>{{ data.post }}<br> {{ data.district }}<br>{{ data.pin }}</b></td>
+      </tr>
+      <tr>
+        <td><b>Licence</b></td>
+        <td><img src="{{ data.licence }}" alt="" height="50px" width="50px"/></td>
+      </tr>
+      <tr>
+        <td><b>Shop Type</b></td>
+        <td><b>{{ data.shop_type }}</b></td>
+      </tr>
+
+    </table>
+<center>
+       <a href="/myapp/shop_editprof/#about" class="btn btn-success">Edit</a>
+
+        <a href="/myapp/back_phome/" class="btn btn-info">BACK to Home</a>
+    </center>
+  </form>
+</div>
+{% endblock %}
